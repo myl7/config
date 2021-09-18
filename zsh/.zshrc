@@ -1,0 +1,1 @@
+[[ ! -f ~/.zshrcl ]] || source ~/.zshrcl

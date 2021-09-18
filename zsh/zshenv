@@ -1,0 +1,4 @@
+export EDITOR=nvim
+export PATH=~/.local/bin:$PATH
+export GOPATH=~/.local/lib/go
+export proxy=http://127.0.0.1:10800
