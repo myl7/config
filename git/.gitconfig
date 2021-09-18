@@ -1,0 +1,19 @@
+[alias]
+	a = add
+	aa = add -A
+	c = commit
+	s = status
+	l = log --oneline --graph
+	p = push
+	ch = checkout
+	cl = clone
+[user]
+	name = myl7
+	email = myl@myl.moe
+	signingkey = 04F1013B67177C88
+[http "https://github.com"]
+	proxy = http://127.0.0.1:10800
+[https "https://github.com"]
+	proxy = http://127.0.0.1:10800
+[commit]
+	gpgsign = true
