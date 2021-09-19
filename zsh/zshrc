@@ -39,5 +39,6 @@ zstyle ':completion:*' menu select
 WORDCHARS=${WORDCHARS/\/}
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 setopt -o sharehistory
+tabs 4
 
 [[ ! -f /etc/zsh/zshrcl ]] || source /etc/zsh/zshrcl
