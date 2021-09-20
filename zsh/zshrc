@@ -12,6 +12,7 @@ alias winecn='LC_ALL=zh_CN.UTF-8 wine'
 alias winejp='LC_ALL=ja_JP.UTF-8 wine'
 alias update-grub='grub-mkconfig -o /boot/grub/grub.cfg'
 alias cnpm='npm --registry https://registry.npm.taobao.org'
+alias v=nvim
 # }}}
 
 # source {{{
