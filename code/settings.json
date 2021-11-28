@@ -1,8 +1,6 @@
 {
   "explorer.confirmDelete": false,
   "editor.rulers": [80, 120],
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
   "search.smartCase": true,
   "markdown.extension.print.absoluteImgPath": false,
   "workbench.settings.openDefaultSettings": true,
@@ -19,14 +17,24 @@
   "workbench.startupEditor": "none",
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": ["--max-line-length=120", "--max-doc-length=120", "--extend-ignore=F401"],
+  "python.linting.flake8Args": [
+    "--max-line-length=120",
+    "--max-doc-length=120",
+    "--extend-ignore=F401,E741"
+  ],
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.tools": [
     {
       "name": "xelatex",
       "command": "xelatex",
-      "args": ["-shell-escape", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"]
+      "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
     }
   ],
   "latex-workshop.latex.recipes": [
@@ -46,7 +54,6 @@
     "-file-line-error",
     "%DOC%"
   ],
-  "python.analysis.memory.keepLibraryAst": true,
   "python.formatting.autopep8Args": ["--max-line-length", "120"],
   "files.trimTrailingWhitespace": true,
   "window.menuBarVisibility": "hidden",
@@ -63,7 +70,7 @@
   },
   "editor.fontLigatures": true,
   "vsicons.dontShowNewVersionMessage": true,
-  "editor.fontFamily": "'Source Code Pro', 'Noto Sans CJK SC', 'Courier New', monospace",
+  "editor.fontFamily": "'DM Mono', 'Noto Sans CJK SC', monospace",
   "editor.fontSize": 12,
   "http.proxy": "http://127.0.0.1:10800",
   "files.eol": "\n",
@@ -82,7 +89,7 @@
   },
   "prettier.configPath": "/home/myl/.prettierrc",
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "restructuredtext.languageServer.disabled": true,
   "verilog.linting.linter": "verilator",
@@ -93,6 +100,24 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "github.copilot.enable": {
-    "*": true
-  }
+    "*": false,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false,
+    "go": false
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "leetcode.workspaceFolder": "/home/myl/code/leetcode",
+  "leetcode.defaultLanguage": "python3",
+  "leetcode.hint.configWebviewMarkdown": false,
+  "leetcode.hint.commentDescription": false,
+  "leetcode.hint.commandShortcut": false
 }

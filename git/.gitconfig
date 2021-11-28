@@ -5,8 +5,7 @@
 	s = status
 	l = log --oneline --graph
 	p = push
-	ch = checkout
-	cl = clone
+	co = checkout
 [user]
 	name = myl7
 	email = myl@myl.moe
@@ -17,3 +16,7 @@
 	proxy = http://127.0.0.1:10800
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
