@@ -58,14 +58,13 @@
   "files.trimTrailingWhitespace": true,
   "window.menuBarVisibility": "hidden",
   "editor.wordWrap": "on",
-  "html.format.extraLiners": "",
-  "html.format.indentHandlebars": true,
-  "html.format.wrapAttributes": "aligned-multiple",
   "editor.minimap.enabled": false,
   "files.exclude": {
     "**/.idea": true
   },
   "files.watcherExclude": {
+    "**/build/*/**": true,
+    "**/target/*/**": true,
     "**/venv/**": true
   },
   "editor.fontLigatures": true,
@@ -74,12 +73,28 @@
   "editor.fontSize": 12,
   "http.proxy": "http://127.0.0.1:10800",
   "files.eol": "\n",
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb",
     "*.hex": "hexEditor.hexEdit"
+  },
+  "prettier.configPath": "/home/myl/.prettierrc.yaml",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -87,30 +102,17 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.configPath": "/home/myl/.prettierrc",
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
   "restructuredtext.languageServer.disabled": true,
   "verilog.linting.linter": "verilator",
   "security.workspace.trust.enabled": false,
   "aws.telemetry": false,
   "redhat.telemetry.enabled": false,
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "yaml": false,
     "plaintext": false,
     "markdown": false,
     "go": false
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
     "editor.tabSize": 4
@@ -119,5 +121,12 @@
   "leetcode.defaultLanguage": "python3",
   "leetcode.hint.configWebviewMarkdown": false,
   "leetcode.hint.commentDescription": false,
-  "leetcode.hint.commandShortcut": false
+  "leetcode.hint.commandShortcut": false,
+  "terminal.integrated.localEchoExcludePrograms": [
+    "vim",
+    "vi",
+    "nano",
+    "tmux",
+    "nvim"
+  ]
 }
