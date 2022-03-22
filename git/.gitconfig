@@ -6,6 +6,9 @@
 	l = log --oneline --graph
 	p = push
 	co = checkout
+	f = fetch
+	r = rebase
+	pl = pull
 [user]
 	name = myl7
 	email = myl@myl.moe
