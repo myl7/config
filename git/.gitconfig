@@ -12,11 +12,7 @@
 [user]
 	name = myl7
 	email = myl@myl.moe
-	signingkey = 04F1013B67177C88
-[http "https://github.com"]
-	proxy = http://127.0.0.1:10800
-[https "https://github.com"]
-	proxy = http://127.0.0.1:10800
+	signingkey = 1F9DE45ED2A4F36A
 [commit]
 	gpgsign = true
 [init]

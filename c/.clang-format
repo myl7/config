@@ -6,3 +6,4 @@ AllowShortFunctionsOnASingleLine: Empty
 AlignAfterOpenBracket: DontAlign
 ContinuationIndentWidth: 2
 SortIncludes: Never
+AlignEscapedNewlines: DontAlign

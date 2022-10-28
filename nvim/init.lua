@@ -19,6 +19,8 @@ vim.o.splitright = true
 vim.o.undofile = true
 vim.o.termguicolors = true
 vim.o.expandtab = true
+vim.o.visualbell = true
+vim.o.t_vb = ''
 
 local function set_indent(indent)
   vim.o.tabstop = indent
