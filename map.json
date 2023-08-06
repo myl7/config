@@ -6,5 +6,7 @@
   "py-setup.cfg": "~/.setup.cfg",
   "clang-format": "~/.clang-format",
   "tmux.conf": "~/.tmux.conf",
-  "editorconfig": "~/.editorconfig"
+  "editorconfig": "~/.editorconfig",
+  "nvim-init.lua": "~/.config/nvim/init.lua",
+  "gitconfig": "~/.gitconfig"
 }

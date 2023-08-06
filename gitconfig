@@ -1,0 +1,18 @@
+[alias]
+	a = add
+	aa = add -A
+	c = commit
+	s = status
+	l = log --oneline --graph
+	p = push
+	co = checkout
+[user]
+	name = myl7
+	email = myl@myl.moe
+	signingkey = C704BEEE40DF06DD85CEE2281F9DE45ED2A4F36A
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
