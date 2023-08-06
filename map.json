@@ -1,4 +1,10 @@
 {
   "zshrc": "~/.zshrc",
-  "zshrnv": "~/.zshenv"
+  "zshrnv": "~/.zshenv",
+  "p10k.zsh": "~/.p10k.zsh",
+  "prettierrc.json": "~/.prettierrc.json",
+  "py-setup.cfg": "~/.setup.cfg",
+  "clang-format": "~/.clang-format",
+  "tmux.conf": "~/.tmux.conf",
+  "editorconfig": "~/.editorconfig"
 }
