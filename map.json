@@ -8,5 +8,8 @@
   "tmux.conf": "~/.tmux.conf",
   "editorconfig": "~/.editorconfig",
   "nvim-init.lua": "~/.config/nvim/init.lua",
-  "gitconfig": "~/.gitconfig"
+  "gitconfig": "~/.gitconfig",
+  "rime/default.custom.yaml": "~/.local/share/fcitx5/rime/default.custom.yaml",
+  "rime/rime_ice.custom.yaml": "~/.local/share/fcitx5/rime/rime_ice.custom.yaml",
+  "rime/rime_ice_meta.dict.yaml": "~/.local/share/fcitx5/rime/rime_ice_meta.dict.yaml"
 }
