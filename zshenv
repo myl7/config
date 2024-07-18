@@ -1,5 +1,4 @@
 export EDITOR=nvim
-export PATH=~/.local/bin:~/.local/share/go/bin:$PATH
-export GOPATH=~/.local/share/go
+export PATH=~/.local/bin:$PATH
 
 [[ -f ~/.zshenvl ]] && source ~/.zshenvl
