@@ -7,12 +7,14 @@ alias rm='rm -I'
 alias ls='ls --color=auto'
 alias ll='ls -lh'
 alias rsync='rsync -P'
-find_prog nvim && alias vim=nvim
 alias sudovim=sudoedit
+(! find_prog vim && find_prog nvim) && alias vim=nvim
+(! find_prog mamba && find_prog micromamba) && alias mamba=micromamba
 
 plugin_dirs=(
-  /usr/share
   /usr/share/zsh/plugins
+  /usr/share
+  ~/.local/share/zsh/plugins
   ~/.local/share
 )
 function load_plugin {
