@@ -1,0 +1,11 @@
+[tool.poetry.dependencies]
+python = "^3.10" # For the | operator in type hints
+
+[tool.poetry.group.dev.dependencies]
+black = ">=22.3.0"
+mypy = ">=1.0.0"
+
+[tool.black]
+line-length = 120
+
+[tool.mypy]

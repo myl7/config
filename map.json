@@ -3,7 +3,7 @@
   "zshenv": "~/.zshenv",
   "p10k.zsh": "~/.p10k.zsh",
   "prettierrc.json": "~/.prettierrc.json",
-  "py-setup.cfg": "~/.setup.cfg",
+  "pyproject.toml": "~/.pyproject.toml",
   "clang-format": "~/.clang-format",
   "tmux.conf": "~/.tmux.conf",
   "editorconfig": "~/.editorconfig",
