@@ -1,0 +1,21 @@
+[alias]
+	s = status
+	l = log --oneline --graph
+	a = add
+	aa = add -A
+	c = commit
+	ca = commit --amend
+	co = checkout
+	p = push
+	pl = pull
+	rs = restore --staged
+	r = rebase
+	f = fetch
+	st = stash
+[user]
+	name = myl7
+	email = myl@myl.moe
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
