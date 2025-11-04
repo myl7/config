@@ -1,0 +1,11 @@
+patch:
+  # 默认英文
+  switches/@0/reset: 1
+  # 模糊音
+  speller/algebra/+:
+    - derive/^l/n/
+    - derive/^n/l/
+    - derive/in$/ing/
+    - derive/ing$/in/
+  # 自定义词典入口以便扩展
+  translator/dictionary: rime_ice_meta

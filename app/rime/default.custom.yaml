@@ -1,0 +1,7 @@
+patch:
+  # 使用「雾凇拼音」的默认配置
+  __include: rime_ice_suggestion:/
+  # 仅留「雾凇拼音」可选
+  schema_list: [{ schema: rime_ice }]
+  # 候选词数目
+  menu/page_size: 9
