@@ -1,0 +1,8 @@
+[
+  { "hostPath": "~/.gitconfig", "projPath": "app/.gitconfig" },
+  { "hostPath": "~/.p10k.zsh", "projPath": "app/.p10k.zsh" },
+  { "hostPath": "~/.tmux.conf", "projPath": "app/.tmux.conf" },
+  { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" },
+  { "hostPath": "~/.zshenv", "projPath": "app/.zshenv" },
+  { "hostPath": "~/.config/nvim/init.lua", "projPath": "app/init.lua" }
+]

@@ -1,0 +1,23 @@
+BasedOnStyle: Google
+ColumnLimit: 120
+
+DerivePointerAlignment: false
+PointerAlignment: Right
+
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+
+AlignAfterOpenBracket: DontAlign
+AlignEscapedNewlines: DontAlign
+
+# Keep all indent widths the same
+ConstructorInitializerIndentWidth: 2
+ContinuationIndentWidth: 2
+
+SortIncludes: Never
+SortUsingDeclarations: Never
+
+IndentPPDirectives: BeforeHash
+ReflowComments: false

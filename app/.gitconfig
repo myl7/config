@@ -1,0 +1,17 @@
+[alias]
+	s = status
+	a = add
+	c = commit
+	co = checkout
+	p = push
+	l = log --oneline --graph
+	aa = add -A
+	ca = commit --amend
+	rs = restore --staged
+[user]
+	name = Yulong Ming (myl7)
+	email = myl@myl.moe
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
