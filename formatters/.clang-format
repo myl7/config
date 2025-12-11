@@ -1,5 +1,7 @@
 BasedOnStyle: Google
-ColumnLimit: 120
+ColumnLimit: 100
+IndentWidth: 4
+AccessModifierOffset: -4
 
 DerivePointerAlignment: false
 PointerAlignment: Right
@@ -12,11 +14,8 @@ AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AlignAfterOpenBracket: DontAlign
 AlignEscapedNewlines: DontAlign
 
-# Keep all indent widths the same
-ConstructorInitializerIndentWidth: 2
-ContinuationIndentWidth: 2
-
-SortIncludes: Never
+SortIncludes:
+    Enabled: false
 SortUsingDeclarations: Never
 
 IndentPPDirectives: BeforeHash
