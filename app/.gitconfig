@@ -9,8 +9,8 @@
 	ca = commit --amend
 	rs = restore --staged
 [user]
-	name = Yulong Ming (myl7)
-	email = myl@myl.moe
+	name = Yulong Ming
+	email = i@myl.moe
 [init]
 	defaultBranch = main
 [pull]
