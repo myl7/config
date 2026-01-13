@@ -5,8 +5,3 @@ printWidth = 100
 files = ["*.yaml", "*.yml"]
 [overrides.options]
 tabWidth = 2
-
-[[overrides]]
-files = "*.json"
-[overrides.options]
-tabWidth = 2
