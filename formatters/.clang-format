@@ -13,6 +13,7 @@ AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 
 AlignAfterOpenBracket: DontAlign
 AlignEscapedNewlines: DontAlign
+AlignOperands: DontAlign
 
 SortIncludes:
     Enabled: false
