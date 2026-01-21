@@ -1,0 +1,6 @@
+ControlMaster auto
+ControlPath ~/.ssh/ctl/%r@%h:%p
+ControlPersist 1d
+ServerAliveInterval 60
+#StrictHostKeychecking no
+#IdentitiesOnly yes
