@@ -32,11 +32,11 @@ local function set_indent(indent)
   vim.o.tabstop = indent
   vim.o.shiftwidth = indent
 end
-set_indent(2)
+set_indent(4)
 
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-  pattern={'*.md', '*.py', '*.rs'},
-  callback=function() set_indent(4) end
+  pattern={'*.yaml', '*.yml', '*.json'},
+  callback=function() set_indent(2) end
 })
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   pattern={'*.go', '*.makefile', 'Makefile'},
