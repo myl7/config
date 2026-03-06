@@ -1,32 +1,75 @@
-# myl7's Config
+# config
 
-## Layout
+My dotfiles, app config, and formatter config, synced between host and repo with a single script.
 
--   `app/`: application config
--   `formatters/`: formatter config
--   `scripts/sync.py`: helper that copies files between the host and this repository based on a JSON mapping.
--   `mappings.json`: default mapping from host paths to their locations in the repo used by `sync.py`.
+## Features
 
-## Syncing Config
+- Two-way sync between host system and this repository.
+- JSON-based mapping for flexible file organization.
+- Dry-run mode for safe previewing.
+- No external dependencies (Python 3 standard library only).
 
-`scripts/sync.py` reads `mappings.json` and copies each host file into the matching location in the repo. Run it after making changes on the host to capture them in Git.
+## Get Started
+
+Clone the repo and pull your host config into it:
 
 ```bash
-./scripts/sync.py            # host → repo (default)
-./scripts/sync.py --to-host  # repo → host
-./scripts/sync.py --dry-run  # preview without writing files
+git clone <repo-url> && cd config
+./scripts/sync.py            # host -> repo
 ```
 
-Flags of note:
+To push repo config back to the host:
 
--   `--map` lets you point to another mapping file.
--   `--project-root` changes the base directory for repo paths (defaults to the current directory).
--   `--verbose` prints each copy action; combine with `--dry-run` when debugging.
+```bash
+./scripts/sync.py --to-host  # repo -> host
+```
 
-The script only uses the Python standard library, so any recent Python 3 should work.
+Preview before writing:
 
-## Adding New Files
+```bash
+./scripts/sync.py --dry-run
+```
 
-1. Place the new config under `app/` (or another directory if it makes more sense).
-2. Add a mapping entry to `mappings.json`, pairing the host path with the repo path.
-3. Run `./scripts/sync.py --to-host` to push the repo copy back onto the system, or the default direction to pull updates from the host.
+## Config
+
+### mappings.json
+
+An array of objects, each mapping a host path to a repo path:
+
+```json
+[
+  { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" }
+]
+```
+
+- `hostPath`: absolute or `~`-prefixed path on the host.
+- `projPath`: path relative to the project root.
+
+### sync.py flags
+
+| Flag | Description |
+|------|-------------|
+| `--to-host` | Reverse direction: copy from repo to host. |
+| `--dry-run` | Preview actions without writing files. |
+| `--map FILE` | Use a different mapping file (default: `mappings.json`). |
+| `--project-root DIR` | Set the base directory for repo paths (default: current directory). |
+| `--verbose` | Print each copy action. |
+
+### Adding new files
+
+1. Place the config file under `app/` (or another fitting directory).
+2. Add an entry to `mappings.json`.
+3. Run `./scripts/sync.py` or `./scripts/sync.py --to-host` as needed.
+
+## Repository Layout
+
+- `app/`: application config (shell, editor, input method, SSH, etc.).
+- `formatters/`: formatter config (clang-format, prettier, ruff).
+- `scripts/sync.py`: the sync script.
+- `mappings.json`: default host-to-repo path mapping.
+
+## License
+
+Copyright (c) 2025 Yulong Ming <i@myl.moe>
+
+MIT License
