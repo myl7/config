@@ -5,7 +5,16 @@
   { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" },
   { "hostPath": "~/.zshenv", "projPath": "app/.zshenv" },
   { "hostPath": "~/.config/nvim/init.lua", "projPath": "app/init.lua" },
-  { "hostPath": "~/.local/share/fcitx5/rime/rime_ice.custom.yaml", "projPath": "app/rime/rime_ice.custom.yaml" },
-  { "hostPath": "~/.local/share/fcitx5/rime/default.custom.yaml", "projPath": "app/rime/default.custom.yaml" },
-  { "hostPath": "~/.local/share/fcitx5/rime/rime_ice_meta.dict.yaml", "projPath": "app/rime/rime_ice_meta.dict.yaml" }
+  {
+    "hostPath": "~/.local/share/fcitx5/rime/rime_ice.custom.yaml",
+    "projPath": "app/rime/rime_ice.custom.yaml"
+  },
+  {
+    "hostPath": "~/.local/share/fcitx5/rime/default.custom.yaml",
+    "projPath": "app/rime/default.custom.yaml"
+  },
+  {
+    "hostPath": "~/.local/share/fcitx5/rime/rime_ice_meta.dict.yaml",
+    "projPath": "app/rime/rime_ice_meta.dict.yaml"
+  }
 ]

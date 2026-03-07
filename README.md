@@ -37,9 +37,7 @@ Preview before writing:
 An array of objects, each mapping a host path to a repo path:
 
 ```json
-[
-  { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" }
-]
+[{ "hostPath": "~/.zshrc", "projPath": "app/.zshrc" }]
 ```
 
 - `hostPath`: absolute or `~`-prefixed path on the host.
@@ -47,13 +45,13 @@ An array of objects, each mapping a host path to a repo path:
 
 ### sync.py flags
 
-| Flag | Description |
-|------|-------------|
-| `--to-host` | Reverse direction: copy from repo to host. |
-| `--dry-run` | Preview actions without writing files. |
-| `--map FILE` | Use a different mapping file (default: `mappings.json`). |
+| Flag                 | Description                                                         |
+| -------------------- | ------------------------------------------------------------------- |
+| `--to-host`          | Reverse direction: copy from repo to host.                          |
+| `--dry-run`          | Preview actions without writing files.                              |
+| `--map FILE`         | Use a different mapping file (default: `mappings.json`).            |
 | `--project-root DIR` | Set the base directory for repo paths (default: current directory). |
-| `--verbose` | Print each copy action. |
+| `--verbose`          | Print each copy action.                                             |
 
 ### Adding new files
 
