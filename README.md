@@ -70,6 +70,6 @@ An array of objects, each mapping a host path to a repo path:
 
 ## License
 
-Copyright (c) 2025 Yulong Ming <i@myl.moe>
+Copyright (c) 2025 Yulong Ming <i@myl7.org>
 
 MIT License

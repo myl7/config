@@ -10,7 +10,7 @@
 	rs = restore --staged
 [user]
 	name = Yulong Ming
-	email = i@myl.moe
+	email = i@myl7.org
 [init]
 	defaultBranch = main
 [pull]
