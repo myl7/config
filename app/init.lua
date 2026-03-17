@@ -1,5 +1,4 @@
-local vim = vim
-
+-- Optional per-machine prelude (extra plugins, etc.)
 local prelude
 if pcall(require, 'init_prelude') then
   prelude = require('init_prelude')
@@ -8,6 +7,7 @@ else
   prelude['plugs'] = {}
 end
 
+-- Options
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.ignorecase = true
@@ -19,44 +19,69 @@ vim.o.listchars = 'tab:>·,trail:␣'
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.undofile = true
-vim.o.termguicolors = true
 vim.o.expandtab = true
-vim.o.visualbell = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 vim.o.belloff = 'all'
 
+-- Per-filetype indent (buffer-local). Pass 'tab' for noexpandtab.
 local function set_indent(indent)
   if indent == 'tab' then
-    vim.o.expandtab = false
+    vim.bo.expandtab = false
     indent = 4
+  else
+    vim.bo.expandtab = true
   end
-  vim.o.tabstop = indent
-  vim.o.shiftwidth = indent
+  vim.bo.tabstop = indent
+  vim.bo.shiftwidth = indent
 end
-set_indent(4)
 
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-  pattern={'*.yaml', '*.yml', '*.json'},
-  callback=function() set_indent(2) end
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'yaml', 'json'},
+  callback = function() set_indent(2) end,
 })
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-  pattern={'*.go', '*.makefile', 'Makefile'},
-  callback=function() set_indent('tab') end
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'go', 'make'},
+  callback = function() set_indent('tab') end,
 })
 
-vim.keymap.set('n', 'Q', '', {noremap=false})
+-- Keymaps
+vim.keymap.set('n', 'Q', '', {noremap = false})  -- disable Ex mode
 
-local Plug = vim.fn['plug#']
-vim.call('plug#begin')
-Plug('morhetz/gruvbox')
-Plug('vim-airline/vim-airline')
-Plug('vim-airline/vim-airline-themes')
-for _,v in ipairs(prelude.plugs) do
-  Plug(v)
+-- lazy.nvim bootstrap
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    'git', 'clone', '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable',
+    lazypath,
+  })
 end
-vim.call('plug#end')
+vim.opt.rtp:prepend(lazypath)
 
-vim.g.gruvbox_italic = 1
-vim.cmd 'colorscheme gruvbox'
-vim.g.airline_theme = 'gruvbox'
+-- Plugins
+local plugins = {
+  {
+    'morhetz/gruvbox',
+    priority = 1000,
+    config = function()
+      vim.g.gruvbox_italic = 1
+      vim.cmd('colorscheme gruvbox')
+    end,
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    opts = {
+      options = { theme = 'gruvbox' },
+    },
+  },
+}
+for _, v in ipairs(prelude.plugs) do
+  table.insert(plugins, { v })
+end
 
-pcall(require, "initl")
+require('lazy').setup(plugins)
+
+-- Optional per-machine local config (lua/init_local.lua)
+pcall(require, 'init_local')

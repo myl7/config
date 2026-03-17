@@ -8,15 +8,19 @@
 	aa = add -A
 	ca = commit --amend
 	rs = restore --staged
+
 [user]
 	name = Yulong Ming
 	email = i@myl7.org
+
 [init]
 	defaultBranch = main
+
 [pull]
 	rebase = true
+
+# Git LFS
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
