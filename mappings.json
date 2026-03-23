@@ -16,5 +16,6 @@
   {
     "hostPath": "~/.local/share/fcitx5/rime/rime_ice_meta.dict.yaml",
     "projPath": "app/rime/rime_ice_meta.dict.yaml"
-  }
+  },
+  { "hostPath": "~/.config/ghostty/config", "projPath": "app/ghostty/config" }
 ]
