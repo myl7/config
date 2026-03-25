@@ -4,7 +4,7 @@ if pcall(require, 'init_prelude') then
   prelude = require('init_prelude')
 else
   prelude = {}
-  prelude['plugs'] = {}
+  prelude['plugins'] = {}
 end
 
 -- Options
@@ -37,7 +37,7 @@ local function set_indent(indent)
 end
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'yaml', 'json'},
+  pattern = {'yaml', 'json', 'lua'},
   callback = function() set_indent(2) end,
 })
 vim.api.nvim_create_autocmd('FileType', {
@@ -47,6 +47,54 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Keymaps
 vim.keymap.set('n', 'Q', '', {noremap = false})  -- disable Ex mode
+vim.keymap.set('n', '<A-1>', ':Ex<CR>', {silent = true})
+
+local format_cmds = {
+  -- prettier
+  javascript = 'prettier --write',
+  typescript = 'prettier --write',
+  javascriptreact = 'prettier --write',
+  typescriptreact = 'prettier --write',
+  css = 'prettier --write',
+  scss = 'prettier --write',
+  less = 'prettier --write',
+  html = 'prettier --write',
+  json = 'prettier --write',
+  jsonc = 'prettier --write',
+  yaml = 'prettier --write',
+  markdown = 'prettier --write',
+  graphql = 'prettier --write',
+  vue = 'prettier --write',
+  -- clang-format
+  c = 'clang-format -i',
+  cpp = 'clang-format -i',
+  objc = 'clang-format -i',
+  objcpp = 'clang-format -i',
+  cuda = 'clang-format -i',
+  proto = 'clang-format -i',
+  java = 'clang-format -i',
+  -- ruff
+  python = 'ruff format',
+  -- taplo
+  toml = 'taplo fmt',
+}
+
+vim.keymap.set('n', '<C-S-i>', function()
+  local ft = vim.bo.filetype
+  local cmd = format_cmds[ft]
+  if not cmd then
+    vim.notify('No formatter for filetype: ' .. ft, vim.log.levels.WARN)
+    return
+  end
+  vim.cmd('write')
+  local file = vim.fn.shellescape(vim.fn.expand('%:p'))
+  local output = vim.fn.system(cmd .. ' ' .. file)
+  if vim.v.shell_error ~= 0 then
+    vim.notify('Format failed: ' .. output, vim.log.levels.ERROR)
+    return
+  end
+  vim.cmd('edit')
+end, { noremap = true, silent = true })
 
 -- lazy.nvim bootstrap
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -77,7 +125,7 @@ local plugins = {
     },
   },
 }
-for _, v in ipairs(prelude.plugs) do
+for _, v in ipairs(prelude.plugins) do
   table.insert(plugins, { v })
 end
 
