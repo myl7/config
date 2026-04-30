@@ -26,7 +26,7 @@ setopt histreduceblanks    # Remove superfluous leading spaces in recorded comma
 setopt inc_append_history  # Write each command to HISTFILE immediately (safe for multiple terminals)
 
 # --- Completion ---
-zstyle :compinstall filename '/home/myl/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 # Highlight the currently selected item when cycling through completion options with Tab
 zstyle ':completion:*' menu select
 
