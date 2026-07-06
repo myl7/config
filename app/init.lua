@@ -1,10 +1,7 @@
 -- Optional per-machine prelude (extra plugins, etc.)
-local prelude
+local prelude = {}
 if pcall(require, 'init_prelude') then
   prelude = require('init_prelude')
-else
-  prelude = {}
-  prelude['plugins'] = {}
 end
 
 -- Options
@@ -20,8 +17,8 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.undofile = true
 vim.o.expandtab = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
 vim.o.belloff = 'all'
 
 -- Per-filetype indent (buffer-local). Pass 'tab' for noexpandtab.
@@ -37,8 +34,8 @@ local function set_indent(indent)
 end
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'yaml', 'json', 'lua'},
-  callback = function() set_indent(2) end,
+  pattern = {'python', 'rust'},
+  callback = function() set_indent(4) end,
 })
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {'go', 'make'},
@@ -62,8 +59,6 @@ local format_cmds = {
   json = 'prettier --write',
   jsonc = 'prettier --write',
   yaml = 'prettier --write',
-  markdown = 'prettier --write',
-  graphql = 'prettier --write',
   vue = 'prettier --write',
   -- clang-format
   c = 'clang-format -i',
@@ -72,11 +67,8 @@ local format_cmds = {
   objcpp = 'clang-format -i',
   cuda = 'clang-format -i',
   proto = 'clang-format -i',
-  java = 'clang-format -i',
   -- ruff
   python = 'ruff format',
-  -- taplo
-  toml = 'taplo fmt',
 }
 
 vim.keymap.set('n', '<C-S-i>', function()
@@ -125,7 +117,7 @@ local plugins = {
     },
   },
 }
-for _, v in ipairs(prelude.plugins) do
+for _, v in ipairs(prelude.plugins or {}) do
   table.insert(plugins, { v })
 end
 
