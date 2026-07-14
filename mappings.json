@@ -4,6 +4,11 @@
   { "hostPath": "~/.tmux.conf", "projPath": "app/.tmux.conf" },
   { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" },
   { "hostPath": "~/.zshenv", "projPath": "app/.zshenv" },
+  {
+    "hostPath": "~/.ssh/config",
+    "projPath": "app/ssh/config",
+    "script": "app/ssh/config.sh"
+  },
   { "hostPath": "~/.config/nvim/init.lua", "projPath": "app/init.lua" },
   {
     "hostPath": "~/.local/share/fcitx5/rime/rime_ice.custom.yaml",

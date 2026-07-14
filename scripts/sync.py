@@ -5,6 +5,7 @@ sync.py — sync dotfiles between host and project using a JSON mapping.
 Mapping JSON example (default: mappings.json in the current directory):
 [
   { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" },
+  { "hostPath": "~/.ssh/config", "projPath": "app/ssh/config", "script": "app/ssh/config.sh" },
 ]
 
 Usage:
@@ -23,9 +24,13 @@ Tips:
 """
 
 from __future__ import annotations
+
 import argparse
 import json
+import os
 import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 from typing import List, Dict
 
@@ -48,6 +53,8 @@ def load_mapping(path: Path) -> List[Dict[str, str]]:
             raise SystemExit(f"[error] mapping[{i}] missing 'hostPath' or 'projPath'")
         if not isinstance(item["hostPath"], str) or not isinstance(item["projPath"], str):
             raise SystemExit(f"[error] mapping[{i}] paths must be strings")
+        if "script" in item and not isinstance(item["script"], str):
+            raise SystemExit(f"[error] mapping[{i}] 'script' must be a string")
     return data
 
 
@@ -73,6 +80,39 @@ def copy_one(src: Path, dst: Path, dry_run: bool, verbose: bool) -> bool:
         except Exception as e:
             print(f"[error] failed to copy {src} -> {dst}: {e}")
             return False
+    return True
+
+
+def filter_one(src: Path, dst: Path, script: Path, dry_run: bool, verbose: bool) -> bool:
+    if not src.exists():
+        print(f"[skip] source missing: {src}")
+        return False
+    if not script.exists():
+        print(f"[error] script missing: {script}")
+        return False
+    if verbose:
+        print(f"[filter] {src}  ->  {script}  ->  {dst}")
+    if dry_run:
+        return True
+
+    temporary_path: Path | None = None
+    try:
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        descriptor, temporary_name = tempfile.mkstemp(dir=dst.parent, prefix=f".{dst.name}.")
+        temporary_path = Path(temporary_name)
+        with os.fdopen(descriptor, "wb") as output_file, src.open("rb") as input_file:
+            subprocess.run([script], stdin=input_file, stdout=output_file, check=True)
+        shutil.copystat(src, temporary_path)
+        temporary_path.replace(dst)
+    except IsADirectoryError:
+        print(f"[error] source or destination is a directory: {src} -> {dst}")
+        return False
+    except (OSError, subprocess.CalledProcessError) as e:
+        print(f"[error] failed to filter {src} with {script}: {e}")
+        return False
+    finally:
+        if temporary_path is not None:
+            temporary_path.unlink(missing_ok=True)
     return True
 
 
@@ -108,7 +148,13 @@ def main() -> None:
         src, dst = resolve_paths(item, project_root, args.to_host)
         if args.verbose:
             print(f"[{i}/{total}] {src} -> {dst}")
-        if copy_one(src, dst, args.dry_run, args.verbose):
+        script = item.get("script")
+        if script and not args.to_host:
+            script_path = (project_root / script).resolve()
+            synced = filter_one(src, dst, script_path, args.dry_run, args.verbose)
+        else:
+            synced = copy_one(src, dst, args.dry_run, args.verbose)
+        if synced:
             copied += 1
 
     print(f"[done] {copied}/{total} item(s) {'would be ' if args.dry_run else ''}synced.")

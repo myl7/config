@@ -6,6 +6,7 @@ My dotfiles, app config, and formatter config, synced between host and repo with
 
 - Two-way sync between host system and this repository.
 - JSON-based mapping for flexible file organization.
+- Optional host-to-repo filters for removing private or machine-specific content.
 - Dry-run mode for safe previewing.
 - No external dependencies (Python 3 standard library only).
 
@@ -37,11 +38,21 @@ Preview before writing:
 An array of objects, each mapping a host path to a repo path:
 
 ```json
-[{ "hostPath": "~/.zshrc", "projPath": "app/.zshrc" }]
+[
+  { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" },
+  {
+    "hostPath": "~/.ssh/config",
+    "projPath": "app/ssh/config",
+    "script": "app/ssh/config.sh"
+  }
+]
 ```
 
 - `hostPath`: absolute or `~`-prefixed path on the host.
 - `projPath`: path relative to the project root.
+- `script`: optional path relative to the project root. During host-to-repo sync,
+  the script reads the host config from stdin and writes the repo config to stdout.
+  Repo-to-host sync ignores the script.
 
 ### sync.py flags
 
