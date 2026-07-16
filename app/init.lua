@@ -13,6 +13,7 @@ vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.belloff = 'all'
+-- vim.o.clipboard = 'unnamedplus'
 
 -- Per-filetype indent (buffer-local). Pass 'tab' for noexpandtab.
 local function set_indent(indent)
