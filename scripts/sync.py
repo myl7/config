@@ -64,10 +64,11 @@ def resolve_paths(item: Dict[str, str], project_root: Path, to_host: bool) -> tu
     return (proj, host) if to_host else (host, proj)
 
 
-def copy_one(src: Path, dst: Path, dry_run: bool, verbose: bool) -> bool:
+def copy_one(src: Path, dst: Path, dry_run: bool, verbose: bool) -> bool | None:
     if not src.exists():
-        print(f"[skip] source missing: {src}")
-        return False
+        if verbose:
+            print(f"[skip] source missing: {src}")
+        return None
     dst.parent.mkdir(parents=True, exist_ok=True)
     if verbose:
         print(f"[copy] {src}  ->  {dst}")
@@ -83,10 +84,11 @@ def copy_one(src: Path, dst: Path, dry_run: bool, verbose: bool) -> bool:
     return True
 
 
-def filter_one(src: Path, dst: Path, script: Path, dry_run: bool, verbose: bool) -> bool:
+def filter_one(src: Path, dst: Path, script: Path, dry_run: bool, verbose: bool) -> bool | None:
     if not src.exists():
-        print(f"[skip] source missing: {src}")
-        return False
+        if verbose:
+            print(f"[skip] source missing: {src}")
+        return None
     if not script.exists():
         print(f"[error] script missing: {script}")
         return False
@@ -143,6 +145,7 @@ def main() -> None:
     mapping = load_mapping(mapping_path)
 
     copied = 0
+    skipped = 0
     total = len(mapping)
     for i, item in enumerate(mapping, start=1):
         src, dst = resolve_paths(item, project_root, args.to_host)
@@ -154,10 +157,14 @@ def main() -> None:
             synced = filter_one(src, dst, script_path, args.dry_run, args.verbose)
         else:
             synced = copy_one(src, dst, args.dry_run, args.verbose)
-        if synced:
+        if synced is None:
+            skipped += 1
+        elif synced:
             copied += 1
 
-    print(f"[done] {copied}/{total} item(s) {'would be ' if args.dry_run else ''}synced.")
+    considered = total - skipped
+    tail = f" ({skipped} skipped: source missing)" if skipped else ""
+    print(f"[done] {copied}/{considered} item(s) {'would be ' if args.dry_run else ''}synced.{tail}")
 
 
 if __name__ == "__main__":
