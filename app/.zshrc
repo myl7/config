@@ -42,3 +42,5 @@ export PATH=~/.local/bin:$PATH
 
 # alias cc='claude --allow-dangerously-skip-permissions --permission-mode bypassPermissions'
 # alias cx='codex --yolo'
+
+[[ -f ~/.zshrcl ]] && source ~/.zshrcl
