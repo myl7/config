@@ -1,6 +1,10 @@
 [
   { "hostPath": "~/.gitconfig", "projPath": "app/.gitconfig" },
-  { "hostPath": "~/.p10k.zsh", "projPath": "app/.p10k.zsh" },
+  {
+    "hostPath": "~/.p10k.zsh",
+    "projPath": "app/.p10k.zsh",
+    "script": "app/.p10k.sh"
+  },
   { "hostPath": "~/.tmux.conf", "projPath": "app/.tmux.conf" },
   { "hostPath": "~/.zshrc", "projPath": "app/.zshrc" },
   { "hostPath": "~/.zshenv", "projPath": "app/.zshenv" },
