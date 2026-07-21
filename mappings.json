@@ -9,7 +9,7 @@
     "projPath": "app/ssh/config",
     "script": "app/ssh/config.sh"
   },
-  { "hostPath": "~/.config/nvim/init.lua", "projPath": "app/init.lua" },
+  { "hostPath": "~/.config/nvim/init.lua", "projPath": "app/nvim/init.lua" },
   {
     "hostPath": "~/.local/share/fcitx5/rime/rime_ice.custom.yaml",
     "projPath": "app/rime/rime_ice.custom.yaml"
